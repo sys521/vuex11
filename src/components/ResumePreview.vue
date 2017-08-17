@@ -84,7 +84,7 @@
 
 <script>
     export default {
-      props: ['resume'],
+
       data: function () {
         return {
           times:['first','second','third','fouth','fifth','sixth','seventh','eighth','ninth','tenth']
@@ -112,8 +112,12 @@
             }
           }
           return false
-        },
-
+        }
+      },
+      computed:{
+       resume(){
+          return this.$store.state.resume
+        }
       }
     }
 

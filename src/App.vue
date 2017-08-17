@@ -36,10 +36,10 @@ export default {
   components:{Topbar,ResumeEditor,ResumePreview},
   data:function(){
     return {
-      ispreview:false,
-      currentUser:{
-        username:'',
-        uid:''
+      ispreview: false,
+      currentUser: {
+        username: '',
+        uid: ''
       },
       resume:{
         personal:{

@@ -6,10 +6,11 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import './assets/reset.scss'
-
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+
 
 
 /* var TestObject = AV.Object.extend('TestObject');
@@ -20,11 +21,11 @@ testObject.save({
   alert('LeanCloud Rocks!');
 }) */           //测试是否正常
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

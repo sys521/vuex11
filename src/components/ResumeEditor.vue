@@ -9,7 +9,7 @@
         </nav>
         <ol class="information">
           <li v-bind:class="{show:item==0}" class="personal">
-            <PersonalInformation v-bind:personal="resume.personal"></PersonalInformation>
+            <PersonalInformation ></PersonalInformation>
           </li>
           <li v-bind:class="{show:item==1}" class="work">
             <UsualComponent v-bind:items="resume.workexperience"
@@ -38,7 +38,7 @@
             </UsualComponent>
           </li>
           <li v-bind:class="{show:item==5}">
-            <Contacts v-bind:contacts="resume.contacts"></Contacts>
+            <Contacts ></Contacts>
           </li>
         </ol>
     </div>
@@ -57,9 +57,9 @@
                 items:[0,1,2,3,4,5],
                 item:0,
                 icons:['zv1','gongwenbao','yuedu','xiangmu','jiangbei','dianhua'],
-
             }
-        }
+        },
+
     }
 </script>
 

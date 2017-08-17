@@ -3,16 +3,16 @@
     <h2>联系方式</h2>
     <el-form  label-position="top">
       <el-form-item label="QQ">
-        <el-input v-model="contacts.qq"></el-input>
+        <el-input @input="changes('contacts','qq',$event)"></el-input>
       </el-form-item>
       <el-form-item label="微信">
-        <el-input v-model="contacts.weixin"></el-input>
+        <el-input @input="changes('contacts','weixin',$event)"></el-input>
       </el-form-item>
       <el-form-item label="邮箱">
-        <el-input v-model="contacts.email"></el-input>
+        <el-input @input="changes('contacts','email',$event)"></el-input>
       </el-form-item>
       <el-form-item label="电话">
-        <el-input v-model="contacts.phone"></el-input>
+        <el-input @input="changes('contacts','phone',$event)"></el-input>
       </el-form-item>
     </el-form>
   </div>
@@ -20,7 +20,11 @@
 
 <script>
   export default {
-    props:['contacts'],
+    methods:{
+      changes(filed,key,value){
+        this.$store.commit('changes',{filed,key,value})
+      }
+    }
 
   }
 </script>
