@@ -89,9 +89,9 @@ export default {
         query.find().then(function (resume) {
           console.log(111)
           if (!resume == []) {
-            console.log(resume)
-            that.resume.id = resume[0].id
-            that.resume = resume[0].attributes.resume
+            console.log(resume[0].id)
+            that.$store.state.resume.id = resume[0].id
+            that.$store.state.resume = resume[0].attributes.resume
           };
         },function(error){
           alert(error)
@@ -140,31 +140,29 @@ export default {
       // 新建对象
       var oldResume = new Resume();
       // 设置名称
-      oldResume.set('resume',this.resume);
+      oldResume.set('resume',this.$store.state.resume);
       // 设置优先级
       var acl = new AV.ACL()
       acl.setReadAccess(AV.User.current(),true) // 只有这个 user 能读
       acl.setWriteAccess(AV.User.current(),true) // 只有这个 user 能写
       oldResume.setACL(acl)
       oldResume.save().then(function (todo) {
-        that.resume.id=todo.id
-        console.log(that.resume.id)
+        that.$store.commit('addId',todo.id)     //为这个数据加上id，登陆的时候可以根据id查找已经保存的数据。
         alert('保存成功')
       }, function (error) {
         console.error(error);
       })
     },
     updateResume:function(){
-      let avResume = AV.Object.createWithoutData('Resume', this.resume.id)
-      avResume.set('resume', this.resume)
+      let avResume = AV.Object.createWithoutData('Resume', this.$store.state.resume.id)
+      avResume.set('resume', this.$store.state.resume)
       avResume.save().then(()=>{
         alert('更新成功')
       })
     },
     SaveOrUpdate:function(){
-      console.log(this.resume)
-      console.log(this.resume.id)
-      if(this.resume.id){
+      console.log(this.$store.state.resume.id)
+      if(this.$store.state.resume.id){
         this.updateResume()
       }else{
         this.saveResume()

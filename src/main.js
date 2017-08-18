@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import './assets/reset.scss'
 import store from './store'
+import objectPath from 'object-path'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

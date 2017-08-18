@@ -12,19 +12,19 @@
             <PersonalInformation ></PersonalInformation>
           </li>
           <li v-bind:class="{show:item==1}" class="work">
-            <UsualComponent v-bind:items="resume.workexperience"
+            <UsualComponent v-bind:item=" workexperience"
                             v-bind:dict=" {duration:'时间',company:'公司',job:'职位'}"
                             v-bind:title=" '工作经历'">
             </UsualComponent> <!-- v-bind 将 当前的workexperience绑定给items，子组件能读取到items属性，所以子组件的依赖就是items。-->
           </li>
           <li v-bind:class="{show:item==2}">
-            <UsualComponent v-bind:items="resume.studyexperience"
+            <UsualComponent v-bind:item="studyexperience"
                             v-bind:dict=" {duration:'时间',school:'学校',degree:'学位'}"
                             v-bind:title=" '教育背景'">
             </UsualComponent>
           </li>
           <li v-bind:class="{show:item==3}">
-            <UsualComponent v-bind:items="resume.itemprctice"
+            <UsualComponent v-bind:item="itemprctice"
                             v-bind:dict="{duration:'时间',project:'项目名称',describe:'描述'}"
                             v-bind:title=" '项目实践'">
             </UsualComponent>
@@ -32,7 +32,7 @@
 
           <li v-bind:class="{show:item==4}">
             <UsualComponent
-                            v-bind:items="resume.evaluation"
+                            v-bind:item="evaluation"
                             v-bind:dict="{describe:'描述'}"
                             v-bind:title=" '自我评价'">
             </UsualComponent>
@@ -57,6 +57,10 @@
                 items:[0,1,2,3,4,5],
                 item:0,
                 icons:['zv1','gongwenbao','yuedu','xiangmu','jiangbei','dianhua'],
+                workexperience:'workexperience',
+                studyexperience:'studyexperience',
+                itemprctice:'itemprctice',
+                evaluation:'evaluation'
             }
         },
 

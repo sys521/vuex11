@@ -4,6 +4,7 @@
 
 import Vuex from 'vuex'
 import Vue from 'vue'
+import objectPath from 'object-path'
 
 Vue.use(Vuex)
 
@@ -20,17 +21,28 @@ var store=new Vuex.Store({
       itemprctice:[{duration:'',project:'', describe:''}],
       evaluation:[{describe:''}],
       contacts:{qq:'',weixin:'',email:'',phone:''}
+    },
+    resumeConfig:{
+      workexperience:{duration:'',company:'',job:''},
+      studyexperience:{duration:'',school:'',degree:''},
+      itemprctice:{duration:'',project:'', describe:''},
+      evaluation:{describe:''}
     }
   },
-    getters:{
-      selected(state,{filed,key}){
-        return state.resume[filed][key]
-      }
-    },
-  mutations:{
-    changes(state,{filed,key,value}){
 
-      state.resume[filed][key]=value    // 不能用state.resume.filed //这样会
+  mutations:{
+    changes(state,playload){
+      objectPath.set(state.resume,playload.path,playload.value)
+    },
+    remove(state,playload){
+      objectPath.del(state.resume,playload.path)
+    },
+    add(state,playload){
+      var value=objectPath.get(state.resumeConfig,playload)
+      objectPath.get(state.resume,playload).push(value)
+    },
+    addId(state,playload){
+      state.resume.id=playload
     }
   }
 })
